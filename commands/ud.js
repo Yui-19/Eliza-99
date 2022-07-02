@@ -10,7 +10,7 @@ async function ud(term) {
 }
 
 const execute = async (client, msg, args) => {
-  msg.delete(true);
+
   //discord-xp
   var cmd_user=await msg.getContact();
   if(!cmd_user.isMe){
@@ -35,35 +35,35 @@ if(parseInt(data_level)>=2||cmd_user.isMe){
   if (data == "error") {
     await client.sendMessage(
       idk,
-      `🙇‍♂️ *Error*\n\n` +
-        "```Something Unexpected Happened while Lookup on Urban Dictionary```"
+      `*Error*\n\n` +
+        "```Something unexpected happened while lookup on urban dictionary```"
     );
   } else {
     await client.sendMessage(
       idk,
-      "*Term:* ```" +
+      "*Term :* ```" +
         args.join(" ") +
         "```\n\n" +
-        "*Definition:* ```" +
+        "*Definition :* ```" +
         data[0].definition +
         "```\n\n" +
-        "*Example:* ```" +
+        "*Example :* ```" +
         data[0].example +
         "```"
     );
   }
 }else{
-  await msg.reply("_This Feature Unlocks at Level 2_\n_Type *!lvl* For Your Current Level_");
+  await msg.reply("This feature unlocks at level 2\n\nType *!lvl* for your current level");
 }
 
 };
 
 module.exports = {
-  name: "Urban Dictionary",
+  name: "Urban dictionary",
   description: "Gets dictionary meanings of words",
   command: "!ud",
   commandType: "plugin",
   isDependent: false,
-  help: `*Urban Dictionary*\n\nUrban Dictionary is a crowdsourced online dictionary for slang words and phrases.\n\n*!ud [Word]*\nto search a word using Urban Dictionary`,
+  help: `*Urban dictionary*\n\nUrban dictionary is a crowdsourced online dictionary for slang words and phrases\n\n*!ud [Word]*\n\nTo search a word using urban dictionary`,
   execute,
 };
