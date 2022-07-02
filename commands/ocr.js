@@ -37,15 +37,15 @@ const execute = async (client,msg) => {
     console.log(parseInt(data_level));
     if(parseInt(data_level)>=1||cmd_user.isMe){
     const chat = await msg.getChat();
-    msg.delete(true);
+    // msg.delete(true);
     if(msg.hasQuotedMsg){
         let quotedMsg = await msg.getQuotedMessage();
         let attachmentData = await quotedMsg.downloadMedia();
         let data = await readImage(attachmentData);
         if (data == "error") {
-            quotedMsg.reply(`Error occured while reading the image. Please make sure the image is clear.`);
+            quotedMsg.reply(`Error occured while reading the image please make sure the image is clear`);
         } else {
-            quotedMsg.reply(`*Extracted Text from the Image*  👇\n\n${data.parsedText}`);
+            quotedMsg.reply(`*Extracted text from the image*\n\n${data.parsedText}`);
         }
     }
     
@@ -53,15 +53,15 @@ const execute = async (client,msg) => {
         await chat.sendMessage(msg.to,'```Please reply to an image with text in it```');
     }
 }else{
-    await msg.reply("_This Feature Unlocks at Level 1_\n_Type *!lvl* For Your Current Level_");
+    await msg.reply("This feature unlocks at level 1\n\nType *!lvl* for your current level");
   }
 };
 
 module.exports = {
-    name: 'OCR',
+    name: 'Ocr',
     description: 'Extracts text content from given image',
     command: '!ocr',
     commandType: 'plugin',
     isDependent: false,
-    help: `*OCR*\n\nReads text from any readable image. \n\n*Reply a photo with !ocr to read text from that image.*\n`,
+    help: `*OCR*\n\nReads text from any readable image\n\n*Reply a photo with !ocr to read text from that image*`,
     execute};
