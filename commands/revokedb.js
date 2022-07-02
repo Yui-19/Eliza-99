@@ -1,13 +1,12 @@
 const database = require("../db");
 const pmpermit = require("../helpers/pmpermit");
 const execute = async (client,msg/*,args*/) => {
-  // msg.delete(true);
     var temp_chat=await msg.getChat();
     await temp_chat.sendMessage("w");
     var temp_contact= await msg.getContact();
     var extracted_array="";
      try{
-       var { conn, coll } = await database("DeletedMessages");
+       var { conn, coll } = await database("Deleted messages");
        
      
      
@@ -26,10 +25,10 @@ const execute = async (client,msg/*,args*/) => {
 };
 
 module.exports = {
-    name: 'revokedb', //name of the module
-    description: 'sdk', // short description of what this command does
-    command: '!revokedb', //command with prefix. Ex command: '!test'
-    commandType: 'dkj', // admin|info|plugin
-    isDependent: false, //whether this command is related/dependent to some other command
-    help: 'olhv', // a string descring how to use this command Ex = help : 'To use this command type !test arguments'
+    name: 'Revokedb', 
+    description: 'skh', 
+    command: '!revokedb', 
+    commandType: 'dkt',
+    isDependent: false, 
+    help: 'olhi',
     execute};
