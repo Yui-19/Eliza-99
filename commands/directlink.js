@@ -21,7 +21,6 @@ async function telegraph(attachmentData) {
 
 }
 const execute = async (client,msg) => {
-    msg.delete(true);
 //discord-xp
 var cmd_user=await msg.getContact();
 if(!cmd_user.isMe){
@@ -48,23 +47,23 @@ if(parseInt(data_level)>=1||cmd_user.isMe){
         if (data == "error") {
             quotedMsg.reply(`Error occured while create direct link.`);
         } else {
-            quotedMsg.reply(`🔗 *Direct Link 👇*\n\n` + "```" + data + "```");
+            quotedMsg.reply(`*Direct link*\n\n` + "```" + data + "```");
         }
     }
     else{
         await client.sendMessage(msg.to,"Please reply to a media file");
     }
 }else{
-    await msg.reply("_This Feature Unlocks at Level 1_\n_Type *!lvl* For Your Current Level_");
+    await msg.reply("This feature unlocks at level 1\n\nType *!lvl* for your current level");
   }
 };
 
 
 module.exports = {
-    name: 'Direct Link',
-    description: 'uploads media toh telegra.ph and creates a direct download link',
+    name: 'Direct link',
+    description: 'Uploads media toh telegra.ph and creates a direct download link',
     command: '!directlink',
     commandType: 'plugin',
     isDependent: false,
-    help: `*Directlink*\n\nIt will generate photo's directlink for you.\n\nReply a photo with *!directlink* to Create`,
+    help: `*Directlink*\n\nIt will generate photo's directlink for you\n\nReply a photo with *!directlink* to create`,
     execute};
