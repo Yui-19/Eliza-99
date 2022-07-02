@@ -1,6 +1,5 @@
 //jshint esversion:8
 const execute = async (client,msg/*,args*/) => {
-    msg.delete(true);
     // const chat= msg.getChat();
     var qm= await msg.getQuotedMessage();
     if(msg.hasQuotedMsg){
@@ -19,15 +18,15 @@ const execute = async (client,msg/*,args*/) => {
     
     var score=await qm.forwardingScore;
     score=score.toString();
-    await qm.reply("*MESSAGE SENT FROM:* "+dev+"\n\n"+"*FORWARDED*: "+ score +" _times_");
+    await qm.reply("*Message sent from :* "+dev+"\n\n"+"*Forwarded* : "+ score +" times");
     }
 };
 
 module.exports = {
-    name: 'info', //name of the module
-    description: 'get the os and forward count of the message', // short description of what this command does
-    command: '!info', //command with prefix. Ex command: '!test'
-    commandType: 'info', // admin|info|plugin
-    isDependent: false, //whether this command is related/dependent to some other command
-    help: 'HELP: !info\n\n```type !info while quoting a message to get the device type they are using and the number of times that particular message was forwarded```', // a string descring how to use this command Ex = help : 'To use this command type !test arguments'
+    name: 'Info',
+    description: 'Gets the os and forward count of the message',
+    command: '!info', 
+    commandType: 'info', 
+    isDependent: false, 
+    help: '*Info*\n\nType !info while quoting a message to get the device type they are using and the number of times that particular message was forwarded',
     execute};
