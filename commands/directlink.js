@@ -61,7 +61,7 @@ if(parseInt(data_level)>=1||cmd_user.isMe){
 
 module.exports = {
     name: 'Direct link',
-    description: 'Uploads media toh telegra.ph and creates a direct download link',
+    description: 'Uploads media to telegra.ph and creates a direct download link',
     command: '!directlink',
     commandType: 'plugin',
     isDependent: false,
