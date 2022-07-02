@@ -14,7 +14,7 @@ async function qrgen(text) {
 }
 
 const execute = async (client,msg,args) => {
-    msg.delete(true);
+
     //discord-xp
     var cmd_user=await msg.getContact();
     if(!cmd_user.isMe){
@@ -47,17 +47,17 @@ const execute = async (client,msg,args) => {
         data = await qrgen(args.join(' '));
     }
     
-    await chat.sendMessage(new MessageMedia(data.mimetype, data.data, data.filename), { caption: `QR code for 👇\n` + "```" + msg.body + "```" });
+    await chat.sendMessage(new MessageMedia(data.mimetype, data.data, data.filename), { caption: `QR code for\n` + "```" + msg.body + "```" });
     }else{
-        await msg.reply("_This Feature Unlocks at Level 1_\n_Type *!lvl* For Your Current Level_");
+        await msg.reply("This feature unlocks at level 1\n\nType *!lvl* for your current level");
       }
 };
 
 module.exports = {
-    name: 'QR generator',
-    description: 'Generates QR for given text',
+    name: 'Qr generator',
+    description: 'Generates qr for given text',
     command: '!qr',
     commandType: 'plugin',
     isDependent: false,
-    help: '`*QR generator*\n\nGenerate QR code with this module. Just send the text it will generate QR Code image for you.\n\n*!qr [Text]*\nor,\nReply a message with *!qr* to Create`',
+    help: '`*Qr generator*\n\nGenerates qr code with this module just send the text it will generate qr code image for you\n\n*!qr [Text]*\n\nReply a message with *!qr* to create`',
     execute};
