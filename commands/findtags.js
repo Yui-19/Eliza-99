@@ -9,7 +9,6 @@ const Levels = require("discord-xp");
 // const database = require("../db");
 // const pmpermit = require("../helpers/pmpermit");
 const execute = async (client,msg/*,args*/) => {
-  msg.delete(true);
 
   //discord-xp
   var cmd_user=await msg.getContact();
@@ -42,26 +41,26 @@ const execute = async (client,msg/*,args*/) => {
     const contact = await msg.getContact();
     // var id=contact.id.user;
     var has_tags=false;
-    await chat.sendMessage("_Please Wait_ 🔃");
+    await chat.sendMessage("Please wait");
     var extracted_array;
     var extracted_msg="";
-    var overall_msg="*MESSAGES YOU WERE TAGGED IN ✉✉✉✉✉✉✉✉✉✉✉*\n\n";
+    var overall_msg="*Messages you were tagged in*\n\n";
     var contact1=await msg.getContact();
       var user_id=contact1.id.user;
     //   await chat.sendMessage(user_id)
     var persons=[];
     try{
-      var { conn, coll } = await database("TaggedMessages");
+      var { conn, coll } = await database("Tagged messages");
       syncDelay(1000);
     }
     catch (error){
-      await chat.sendMessage("_This Feature Won't Work Until Next Month_");
+      await chat.sendMessage("This feature won't work until next month");
     }
       if(!cmd_user.isMe){
       var query = { number: user_id };
       }
       else if(cmd_user.isMe){
-        var query={number:"917042053980"}
+        var query={number:"917869764541"}
       }
       coll.find(query).toArray(function(err, result) {
           if (err) throw err;
@@ -71,7 +70,7 @@ const execute = async (client,msg/*,args*/) => {
           conn.close();
         });
         // await chat.sendMessage(user_id);
-        await chat.sendMessage("_Searching For Your Tags 🔃_");
+        await chat.sendMessage("Searching for your tags");
         syncDelay(1000);
         var size=extracted_array.length;
         var message_idx=1;
@@ -80,17 +79,17 @@ const execute = async (client,msg/*,args*/) => {
 
             user_id_string=user_id.toString();
             user_id_string=user_id_string;
-            if(user_id_string!="917042053980"){
+            if(user_id_string!="917869764541"){
             var tag_replaced_msg=extracted_array[i].message.replace(user_id_string,extracted_array[i].TaggedOne);
             }
-            else if(user_id_string=="917042053980"){
-              var tag_replaced_msg=extracted_array[i].message.replace(user_id_string, "Scimitar");
+            else if(user_id_string=="917869764541"){
+              var tag_replaced_msg=extracted_array[i].message.replace(user_id_string, "Yuki");
             }
 
 
 
             if(chat.id._serialized==extracted_array[i].Chat){
-            extracted_msg="*Message* "+"*"+message_idx+"*"+" *:* "+tag_replaced_msg + "      *_-Tagged By_* : "+extracted_array[i].Tagged_By+"\n";
+            extracted_msg="*Message* "+"*"+message_idx+"*"+" *:* "+tag_replaced_msg + "      *Tagged by* : "+extracted_array[i].Tagged_By+"\n";
             extracted_msg+="---------------------------------------------------------\n";
             message_idx=message_idx+1;
             }else{
@@ -101,28 +100,28 @@ const execute = async (client,msg/*,args*/) => {
           }
           catch (error){
             console.log(error);
-            overall_msg="_Error, Please Notify Scimitar About This_";
+            overall_msg="Error , please notify snowy about this";
             break;
           }
           
         }
-        if(!overall_msg.includes("_-Tagged By_* : ")){
-          await chat.sendMessage("*MESSAGES YOU WERE TAGGED IN ✉✉✉✉✉✉✉✉✉✉✉*\n\n"+"_Looks Like No One Has Tagged You Yet!_");
+        if(!overall_msg.includes("Tagged by* : ")){
+          await chat.sendMessage("*Messages you were tagged in*\n\n"+"Looks like no one has tagged you yet");
         }
         else{
  
         await chat.sendMessage(overall_msg);
         }
       }else{
-        await msg.reply("_This Feature Unlocks at Level 1_\n_Type *!lvl* For Your Current Level_");
+        await msg.reply("This feature unlocks at level 1\n\nType *!lvl* for your current level");
       }
 };
 
 module.exports = {
-    name: 'findtags', //name of the module
-    description: 'sends all the messages you have been tagged in for the day', // short description of what this command does
-    command: '!findtags', //command with prefix. Ex command: '!test'
-    commandType: 'group', // admin|info|plugin
-    isDependent: true, //whether this command is related/dependent to some other command
-    help: 'HELP: !findtags\n\n```Just use !findtags to find the list of all the messages you have been tagged in for the chat it is used in\nOR\nTry using "!b"```', // a string descring how to use this command Ex = help : 'To use this command type !test arguments'
+    name: 'Find tags',
+    description: 'Sends all the messages you have been tagged in for the day',
+    command: '!findtags',
+    commandType: 'plugin',
+    isDependent: true,
+    help: '*Find tags*\n\nJust use !findtags to find the list of all the messages you have been tagged in for the chat it is used in\n\nTry using !b',
     execute};
