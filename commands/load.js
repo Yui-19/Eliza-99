@@ -4,7 +4,6 @@ const ytdl = require('ytdl-core');
 const path = require("path");
 var YoutubeMp3Downloader = require("youtube-mp3-downloader");
 const execute = async (client,msg/*,args*/) => {
-        msg.delete(true);
         const chat= await msg.getChat();
         
 
@@ -51,16 +50,16 @@ const execute = async (client,msg/*,args*/) => {
 
         
         var Aud=MessageMedia.fromFilePath(path.join(__dirname, `..//Audio.mp3`)); 
-        await client.sendMessage(chat.id._serialized,"Sending The Most Recent Song Downloaded");
+        await client.sendMessage(chat.id._serialized,"Sending the most recent song downloaded");
         await client.sendMessage(chat.id._serialized, Aud);
 
 };
 
 module.exports = {
-    name: 'load', //name of the module
-    description: 'load the most recently downloaded song', // short description of what this command does
-    command: '!load', //command with prefix. Ex command: '!test'
-    commandType: 'plugin', // admin|info|plugin
-    isDependent: false, //whether this command is related/dependent to some other command
-    help: 'HELP: !load\n\n```loads the most recent song someone downloaded using !download command```', // a string descring how to use this command Ex = help : 'To use this command type !test arguments'
+    name: 'Load',
+    description: 'Loads the most recently downloaded song',
+    command: '!load', 
+    commandType: 'plugin', 
+    isDependent: false, 
+    help: '*Load*\n\nLoads the most recent song someone downloaded using !download command',
     execute};
