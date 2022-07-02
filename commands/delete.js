@@ -3,7 +3,7 @@ const canvacord = require("canvacord");
 const { MessageMedia } = require("whatsapp-web.js");
 
 const execute = async (client,msg/*,args*/) => {
-    msg.delete(true);
+
 //discord-xp
 var cmd_user=await msg.getContact();
 if(!cmd_user.isMe){
@@ -33,16 +33,16 @@ if(parseInt(data_level)>=2||cmd_user.isMe){
         // canvacord.write(buffer, "spotify.png");
     });
 }else{
-    await msg.reply("_This Feature Unlocks at Level 2_\n_Type *!lvl* For Your Current Level_");
+    await msg.reply("This feature unlocks at level 2\n\nType *!lvl* for your current level");
   }
 
 };
 
 module.exports = {
-    name: 'delete', //name of the module
-    description: 'Delete This Trash? Meme', // short description of what this command does
-    command: '!delete', //command with prefix. Ex command: '!test'
-    commandType: 'reactions', // admin|info|plugin
-    isDependent: false, //whether this command is related/dependent to some other command
-    help: "*Delete*\n_Reply *!delete* To Someone's Message", // a string descring how to use this command Ex = help : 'To use this command type !test arguments'
+    name: 'Delete',
+    description: 'Deletes this trash ? Meme', 
+    command: '!delete', 
+    commandType: 'Reactions', 
+    isDependent: false, 
+    help: "*Delete*\n\nReply *!delete* to someone's message",
     execute};
