@@ -16,26 +16,26 @@ async function fetchweather(query) {
 
 const execute = async (client, msg, args) => {
   const chat = await msg.getChat();
-  msg.delete(true);
+  // msg.delete(true);
   var data = await fetchweather(args.join(" "));
   if (data == "error") {
     await chat.sendMessage(
       
-      `🙇‍♂️ *Error*\n\n` + "```Something Unexpected Happened to fetch Weather```"
+      `*Error*\n\n` + "```Something unexpected happened to fetch weather```"
     );
   } else {
     var weather = data[0];
     await chat.sendMessage(
       
-      `*Today's Weather at ${weather.location.name}*\n` +
+      `*Today's weather at ${weather.location.name}*\n` +
         "```" +
         weather.current.skytext +
         " (" +
         weather.current.temperature +
-        "°C)```\n*Feelslike:* " +
+        "°C)```\n*Feels like :* " +
         "```" +
         weather.current.feelslike +
-        "°C```\n*Humidity:* " +
+        "°C```\n*Humidity :* " +
         "```" +
         weather.current.humidity +
         "```"
@@ -49,6 +49,6 @@ module.exports = {
   command: "!weather",
   commandType: "plugin",
   isDependent: false,
-  help: `*Weather*\n\nLookup a city's weather with this command.\n\n*!weather [Place-Name]*\nTo check a weather`,
+  help: `*Weather*\n\nLookup a city's weather with this command\n\n*!weather [Place-Name]*\n\nTo check a weather`,
   execute,
 };
