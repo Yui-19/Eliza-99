@@ -3,19 +3,18 @@ const config = require("../config");
 const pmpermit = require("../helpers/pmpermit");
 
 const execute = async (client, msg) => {
-  msg.delete(true);
   if (config.pmpermit_enabled == "true" && !msg.to.includes("-")) {
     await pmpermit.nopermit(msg.to.split("@")[0]);
-    msg.reply("*⛔ Not Allowed*\n\nYou are not allowed for PM\n\n _Powered by SciBot_");
+    msg.reply("*You haven't permission to send me personal messages");
   }
 };
 
 module.exports = {
-  name: "Disallow PM", //name of the module
-  description: "Disallow an allowed user for Personal messaging", // short description of what this command does
-  command: "!nopm", //command with prefix. Ex command: '!test'
-  commandType: "igkg", //
-  isDependent: false, //whether this command is related/dependent to some other command
-  help: "Type !nopm in the chat to execute.", // a string descring how to use this command Ex = help : 'To use this command type !test arguments'
+  name: "Nopm",
+  description: "Disallows an allowed user to persoanl message you",
+  command: "!nopm",
+  commandType: "admin",
+  isDependent: false,
+  help: "Type !nopm in the chat to execute",
   execute,
 };
