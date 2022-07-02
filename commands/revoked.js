@@ -1,7 +1,7 @@
 const Levels = require("discord-xp");
 const pmpermit = require("../helpers/pmpermit");
 const execute = async (client, msg/*,args*/) => {
-    msg.delete(true);
+   
 //discord-xp
 var cmd_user=await msg.getContact();
 if(!cmd_user.isMe){
@@ -35,7 +35,7 @@ if(parseInt(data_level)>=3||cmd_user.isMe){
                     break;
                 }
                 else{
-                    await msg.reply("_Only The Group Admins Of This Group Can Control The Deleted Messages_");
+                    await msg.reply("Only the group admins of this group can control the deleted messages");
                     break;
                 }
             }
@@ -57,33 +57,33 @@ if(parseInt(data_level)>=3||cmd_user.isMe){
                 value = true;
             }
 
-            if (contact.id.user == "917042053980") {
-                user_id = "Scimitar";
+            if (contact.id.user == "917869764541") {
+                user_id = "Yuki";
             }
 
             let val = await pmpermit.msg_del(chat.id._serialized, person[0].id._serialized, value);
             if (value == true) {
-                await chat.sendMessage("_ALL deleted text messages will be shown_");
+                await chat.sendMessage("All deleted text messages will be shown");
             }
             else if (value == false) {
-                await chat.sendMessage("_NO deleted text messages will be shown_");
+                await chat.sendMessage("No deleted text messages will be shown");
             }
         }
 
     }
 }else{
-    await msg.reply("_This Feature Unlocks at Level 3_\n_Type *!lvl* For Your Current Level_");
+    await msg.reply("This feature unlocks at level 3\n\nType *!lvl* for your current level");
   }
 
 
 };
 
 module.exports = {
-    name: 'revoked', //name of the module
-    description: 'Control deleted messages of members of a group', // short description of what this command does
-    command: '!revoked', //command with prefix. Ex command: '!test'
-    commandType: 'group', // admin|info|plugin
-    isDependent: false, //whether this command is related/dependent to some other command
-    help: 'HELP: !revoked\n\n```Use this to configure if the bot should display the deleted messages of a specific person or not\n\nUsage Example\n"!revoked @Scimitar true"\nOR\n"!revoked @Scimitar false"```', // a string descring how to use this command Ex = help : 'To use this command type !test arguments'
+    name: 'Revoked', 
+    description: 'Controls deleted messages of members of a group', 
+    command: '!revoked', 
+    commandType: 'info', 
+    isDependent: false, 
+    help: '*Revoked*\n\nUse this to configure if the bot should display the deleted messages of a specific person or not\n\nUsage example\n"!revoked @Yuki true"\n\n"!revoked @Yuki false"',
     execute
 };
