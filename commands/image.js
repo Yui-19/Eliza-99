@@ -2,7 +2,6 @@
 const {MessageMedia} = require('whatsapp-web.js');
 const Levels = require("discord-xp");
 const execute = async (client,msg) => {
-    msg.delete(true);
     //discord-xp
   var cmd_user=await msg.getContact();
   if(!cmd_user.isMe){
@@ -30,23 +29,23 @@ if(cmd_user.isMe||parseInt(data_level)>=2){
         let attachmentData = await quotedMsg.downloadMedia();
         await client.sendMessage( idk, new MessageMedia(attachmentData.mimetype, attachmentData.data, attachmentData.filename));
     } else { 
-        await client.sendMessage(idk, `🙇‍♂️ *Error*\n\n` + "```No image found to make a Sticker```");
+        await client.sendMessage(idk, `*Error*\n\n` + "```No image found to make a sticker```");
     }
 }
 else{
-    await msg.reply("*Scimitar Has Revoked Your Access To This Command!*");
+    await msg.reply("*Eliza has revoked your access to this command*");
 }
 }else{
-    await msg.reply("_This Feature Unlocks at Level 2_\n_Type *!lvl* For Your Current Level_");
+    await msg.reply("This feature unlocks at level 2\n\nType *!lvl* for your current level");
   }
 
 };
 
 module.exports = {
-    name: 'image',
-    description: 'generates image from sticker',
+    name: 'Image',
+    description: 'Generates an image from a sticker',
     command: '!image',
     commandType: 'plugin',
     isDependent: false,
-    help: `*Image*\n\nCreate Image from Sticker.\n\nReply a sticker with *!image* to get an image of that sticker.`,
+    help: `*Image*\n\nCreates an image from a sticker\n\nReply a sticker with *!image* to get an image of that sticker`,
     execute};
