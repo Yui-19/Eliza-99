@@ -9,8 +9,8 @@ const execute = async (client,msg/*,args*/) => {
       var chat_id=chat.id._serialized;
 
 
-      if(contact.id.user=="917042053980"){
-          user_id="Scimitar";
+      if(contact.id.user=="917869764541"){
+          user_id="Yuki";
       } 
     //   await chat.sendMessage(JSON.stringify(chat_id));
         
@@ -22,7 +22,7 @@ const execute = async (client,msg/*,args*/) => {
         tagged_num=leftremoved.substring(1,rightspace_idx);
         }
         catch (error){
-            console.log("hemlo");
+            console.log("hi");
         }
         if(rightspace_idx==-1){
             tagged_num=leftremoved.substring(1);
@@ -45,7 +45,7 @@ const execute = async (client,msg/*,args*/) => {
     // await chat.sendMessage("Tag Saved");
     }
     catch (error){
-        await client.sendMessage(msg.to,"_TS Function Not Working, Please Notify Scimitar About This If You See This Message_");
+        await client.sendMessage(msg.to,"Ts function is not working , please notify eliza about this if you see this message");
     }
 
 }
@@ -53,10 +53,10 @@ const execute = async (client,msg/*,args*/) => {
 };
 
 module.exports = {
-    name: 'tagged', //name of the module
-    description: 'saves tags ', // short description of what this command does
-    command: '!tagged', //command with prefix. Ex command: '!test'
-    commandType: 'none', // admin|info|plugin
-    isDependent: false, //whether this command is related/dependent to some other command
-    help: 'yhfj', // a string descring how to use this command Ex = help : 'To use this command type !test arguments'
+    name: 'Tagged', 
+    description: 'Saves tags ', 
+    command: '!tagged', 
+    commandType: 'none', 
+    isDependent: false, 
+    help: 'Trin',
     execute};
