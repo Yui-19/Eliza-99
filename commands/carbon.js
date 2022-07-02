@@ -18,7 +18,7 @@ async function carbon(text) {
 }
 
 const execute = async (client,msg,args) => {
-    msg.delete(true);
+
     //discord-xp
   var cmd_user=await msg.getContact();
   if(!cmd_user.isMe){
@@ -53,13 +53,13 @@ const execute = async (client,msg,args) => {
     }
 
     if (data == "error") {
-        await chat.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Something Unexpected Happened to create the Carbon.```");
+        await chat.sendMessage(msg.to, `*Error*\n\n` + "```Something unexpected happened to create the carbon```");
     } else {
-        await chat.sendMessage(new MessageMedia(data.mimetype, data.data, data.filename), { caption: `Carbon for 👇\n` + "```" + msg.body.replace("!carbon ", "") + "```" });
+        await chat.sendMessage(new MessageMedia(data.mimetype, data.data, data.filename), { caption: `Carbon for\n\n` + "```" + msg.body.replace("!carbon ", "") + "```" });
     }
 
 }else{
-    await msg.reply("_This Feature Unlocks at Level 1_\n_Type *!lvl* For Your Current Level_");
+    await msg.reply("This feature unlocks at level 1\n\nType *!lvl* for your current level");
   }
 };
 
@@ -70,5 +70,5 @@ module.exports = {
     command: '!carbon',
     commandType: 'plugin',
     isDependent: false,
-    help: `*Carbon*\n\nGenerate beautiful image with carbon.now.sh. Just send the text it will generate an image for you.\n\n*!carbon [Text]*\nor,\nReply a message with *!carbon* to Create`,
+    help: `*Carbon*\n\nGenerates beautiful image with carbon.now.sh. Just send the text it will generate an image for you\n\n*!carbon [Text]*\n\nReply a message with *!carbon* to create`,
     execute};
