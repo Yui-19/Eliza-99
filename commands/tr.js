@@ -26,7 +26,7 @@ async function translator(langReq, text) {
 }
 
 const execute = async (client, msg, args) => {
-    msg.delete(true);
+
     //discord-xp
   var cmd_user=await msg.getContact();
   if(!cmd_user.isMe){
@@ -61,7 +61,7 @@ if(parseInt(data_level)>=2||cmd_user.isMe){
     if (data == "error") {
         await client.sendMessage(
             idk,
-            `🙇‍♂️ *Error*\n\n` + "```Something Unexpected Happened while translating```"
+            `*Error*\n\n` + "```Something unexpected happened while translating```"
         );
     } else {
         await client.sendMessage(
@@ -77,7 +77,7 @@ if(parseInt(data_level)>=2||cmd_user.isMe){
         );
     }
 }else{
-    await msg.reply("_This Feature Unlocks at Level 2_\n_Type *!lvl* For Your Current Level_");
+    await msg.reply("This feature unlocks at level 2\n\nType *!lvl* for your current level");
   }
 };
 
@@ -114,6 +114,6 @@ module.exports = {
     command: "!tr",
     commandType: "plugin",
     isDependent: false,
-    help: `*Translator*\n\nIt will translate text in different languages.\n\n_Usage:_\n1. *!tr [Text]*\n2. Reply with *!tr*\n3. *!tr [Output-Language] [Text]*\n4.Reply with \n*!tr [Output-Language]*`,
+    help: `*Translator*\n\nIt will translate text in different languages\n\nUsage :\n1. *!tr [Text]*\n2. Reply with *!tr*\n3 *!tr [Output-Language] [Text]*\n4.Reply with \n*!tr [Output-Language]*`,
     execute,
 };
