@@ -3,7 +3,6 @@ const canvacord = require("canvacord");
 const { MessageMedia } = require("whatsapp-web.js");
 
 const execute = async (client,msg/*,args*/) => {
-    msg.delete(true);
 
 //discord-xp
 var cmd_user=await msg.getContact();
@@ -34,16 +33,16 @@ if(parseInt(data_level)>=2||cmd_user.isMe){
         // canvacord.write(buffer, "spotify.png");
     });
 }else{
-    await msg.reply("_This Feature Unlocks at Level 2_\n_Type *!lvl* For Your Current Level_");
+    await msg.reply("This feature unlocks at level 2\n\nType *!lvl* for your current level");
   }
 
 };
 
 module.exports = {
-    name: 'jail', //name of the module
-    description: 'Jail Someone', // short description of what this command does
-    command: '!jail', //command with prefix. Ex command: '!test'
-    commandType: 'reactions', // admin|info|plugin
-    isDependent: false, //whether this command is related/dependent to some other command
-    help: "*Jail*\n_Reply *!jail* To Someone's Message_", // a string descring how to use this command Ex = help : 'To use this command type !test arguments'
+    name: 'Jail',
+    description: 'Jails someone',
+    command: '!jail',
+    commandType: 'plugin',
+    isDependent: false,
+    help: "*Jail*\n\nReply *!jail* to someone's message",
     execute};
