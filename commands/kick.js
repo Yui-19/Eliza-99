@@ -1,7 +1,7 @@
 //jshint esversion:8
 const Levels = require("discord-xp");
 const execute = async (client,msg/*,args*/) => {
-    msg.delete(true);
+
     //discord-xp
   var cmd_user=await msg.getContact();
   if(!cmd_user.isMe){
@@ -46,7 +46,7 @@ if(parseInt(data_level)>=3||cmd_user.isMe){
                 }
                 
                 else{
-                    await chat.sendMessage("_SciBot isn't the admin of this group_");
+                    await chat.sendMessage("Whats isn't the admin of this group");
                     break;
                 }
             }
@@ -67,21 +67,21 @@ if(parseInt(data_level)>=3||cmd_user.isMe){
         chat.removeParticipants(arr);
         }
         if(user_admin==false){
-            await chat.sendMessage("_You are not the admin of this group_");
+            await chat.sendMessage("You are not the admin of this group");
         }
         
     }
 }else{
-    await msg.reply("_This Feature Unlocks at Level 3_\n_Type *!lvl* For Your Current Level_");
+    await msg.reply("This feature unlocks at level 3\nType *!lvl* for your current level");
   }
 
 };
 
 module.exports = {
-    name: 'kick', //name of the module
-    description: 'remove someone from the group', // short description of what this command does
-    command: '!kick', //command with prefix. Ex command: '!test'
-    commandType: 'group', // admin|info|plugin
-    isDependent: false, //whether this command is related/dependent to some other command
-    help: 'HELP: !kick\n\n```Just use !kick while quoting the message of someone you want to remove```', // a string descring how to use this command Ex = help : 'To use this command type !test arguments'
+    name: 'Kick', 
+    description: 'Removes someone from the group', 
+    command: '!kick', 
+    commandType: 'admin',
+    isDependent: false, 
+    help: '*Kick*\n\nJust use !kick while quoting the message of someone you want to remove',
     execute};
