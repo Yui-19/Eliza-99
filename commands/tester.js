@@ -24,10 +24,10 @@ const execute = async (client,msg/*,args*/) => {
 };
 
 module.exports = {
-    name: 'tester', //name of the module
-    description: 'sk', // short description of what this command does
-    command: '!tester', //command with prefix. Ex command: '!test'
-    commandType: 'nothing', // admin|info|plugin
-    isDependent: false, //whether this command is related/dependent to some other command
-    help: 'sfs', // a string descring how to use this command Ex = help : 'To use this command type !test arguments'
+    name: 'Tester', 
+    description: 'sk', 
+    command: '!tester', 
+    commandType: 'nothing',
+    isDependent: false,
+    help: 'sfs',
     execute};
