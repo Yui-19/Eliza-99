@@ -3,7 +3,7 @@ const canvacord = require("canvacord");
 const { MessageMedia } = require("whatsapp-web.js");
 
 const execute = async (client,msg/*,args*/) => {
-    msg.delete(true);
+
 //discord-xp
 var cmd_user=await msg.getContact();
 if(!cmd_user.isMe){
@@ -33,16 +33,16 @@ if(parseInt(data_level)>=2||cmd_user.isMe){
         // canvacord.write(buffer, "spotify.png");
     });
 }else{
-    await msg.reply("_This Feature Unlocks at Level 2_\n_Type *!lvl* For Your Current Level_");
+    await msg.reply("This feature unlocks at level 2\n\nType *!lvl* for your current level");
   }
 
 };
 
 module.exports = {
-    name: 'cmm', //name of the module
-    description: 'Change My Mind Meme', // short description of what this command does
-    command: '!cmm', //command with prefix. Ex command: '!test'
-    commandType: 'reactions', // admin|info|plugin
-    isDependent: false, //whether this command is related/dependent to some other command
-    help: "*Change My Mind*\n_Reply *!cmm* To Someone's Message_", // a string descring how to use this command Ex = help : 'To use this command type !test arguments'
+    name: 'Cmm', 
+    description: 'Change my mind meme', 
+    command: '!cmm', 
+    commandType: 'plugin', 
+    isDependent: false, 
+    help: "*Change my mind*\n\nReply *!cmm* To someone's message", 
     execute};
