@@ -29,17 +29,17 @@ class MyGame extends MiniGame {
     this.client = client;
     this.chatId = message._getChatId();
     this.answer = Math.floor(Math.random() * 100).toString();
-    this.client.sendMessage(this.chatId, "Game Started! Guess the number!");
+    this.client.sendMessage(this.chatId, "Game has been started ! Guess the number");
   }
   async procMessage(message) {
     if (message.body.includes(this.answer)) {
-      await message.reply('You are right!');
+      await message.reply('You are right');
       this.gameOver();
     } else if (!message.fromMe) {
-      await message.reply('You are wrong.');
+      await message.reply('You are wrong');
     }
     if (message.body == "!stop") {
-      await message.reply("_Game Stopped!_");
+      await message.reply("Game has been stopped");
       this.gameOver();
     }
   }
@@ -61,16 +61,16 @@ class MAFIA extends MiniGame {
     this.player4 = mentions_array[0];
     this.player5 = mentions_array[0];
     this.answer = Math.floor(Math.random() * 100).toString();
-    this.client.sendMessage(this.chatId, "Game Started! Guess the number!");
+    this.client.sendMessage(this.chatId, "Game has been started ! Guess the number");
   }
   async procMessage(message) {
 
-    await this.client.sendMessage(this.player1._serialized, 'Hello, Successful Run');
+    await this.client.sendMessage(this.player1._serialized, 'Hi , successful run');
     // this.gameOver();
 
 
     if (message.body == "!stop") {
-      await message.reply("_Game Stopped!_");
+      await message.reply("Game has been stopped");
       this.gameOver();
     }
   }
@@ -89,7 +89,7 @@ class TTT extends MiniGame {
     this.answer = Math.floor(Math.random() * 100).toString();
     this.P1 = P1;
     this.P2 = P2;
-    this.client.sendMessage(this.chatId, "Game Started! Make Your Move! " + this.P1.pushname);
+    this.client.sendMessage(this.chatId, "Game has been started ! Make your move" + this.P1.pushname);
     this.turn = 1;
     this.arr = ["", "", "", "", "", "", "", "", "", ""];
 
@@ -135,21 +135,21 @@ class TTT extends MiniGame {
       console.log(this.arr);
       const RankCard = new MessageMedia("image/png", card.toString("base64"), "TicTacToe.png")
       await message.reply(RankCard);
-      if (this.Winner(this.arr) == "Player1Wins") {
+      if (this.Winner(this.arr) == "Player 1 wins") {
         const chat = await message.getChat();
-        await chat.sendMessage(P1.pushname + " Won!🎉🎉🎉");
+        await chat.sendMessage(P1.pushname + " Won");
         this.arr = ["", "", "", "", "", "", "", "", "", ""];
         this.gameOver();
       }
-      else if (this.Winner(arr) == "Player2Wins") {
+      else if (this.Winner(arr) == "Player 2 wins") {
         const chat = await message.getChat();
-        await chat.sendMessage(P2.pushname + " Won!🎉🎉🎉");
+        await chat.sendMessage(P2.pushname + " Won");
         this.arr = ["", "", "", "", "", "", "", "", "", ""];
         this.gameOver();
 
       } else if (this.Winner(arr) == "Draw") {
         const chat = await message.getChat();
-        await chat.sendMessage("It's a Draw!☹");
+        await chat.sendMessage("It's a draw");
         this.arr = ["", "", "", "", "", "", "", "", "", ""];
         this.gameOver();
 
@@ -158,10 +158,10 @@ class TTT extends MiniGame {
 
     }
     else if (!message.fromMe) {
-      await message.reply('Please Give a Number For The Position You Want To Mark\n--------------\n| 1 | 4 | 7 |\n| 2 | 5 | 8 |\n| 3 | 6 | 9 |');
+      await message.reply('Please give a number for the position you want to mark\n--------------\n| 1 | 4 | 7 |\n| 2 | 5 | 8 |\n| 3 | 6 | 9 |');
     }
     if (message.body == "!stop") {
-      await message.reply("_Game Stopped!_");
+      await message.reply("Game has been stopped");
       this.arr = ["", "", "", "", "", "", "", "", "", ""];
       this.gameOver();
     }
@@ -170,12 +170,12 @@ class TTT extends MiniGame {
     if ((value_array[1] == "O" && value_array[4] == "O" && value_array[7] == "O") || (value_array[2] == "O" && value_array[5] == "O" && value_array[8] == "O") || (value_array[3] == "O" && value_array[6] == "O" && value_array[9] == "O") ||
       (value_array[1] == "O" && value_array[2] == "O" && value_array[3] == "O") || (value_array[4] == "O" && value_array[5] == "O" && value_array[6] == "O") || (value_array[7] == "O" && value_array[8] == "O" && value_array[9] == "O") ||
       (value_array[1] == "O" && value_array[5] == "O" && value_array[9] == "O") || (value_array[7] == "O" && value_array[5] == "O" && value_array[3] == "O")) {
-      return "Player1Wins";
+      return "Player 1 wins";
     }
     else if ((value_array[1] == "X" && value_array[4] == "X" && value_array[7] == "X") || (value_array[2] == "X" && value_array[5] == "X" && value_array[8] == "X") || (value_array[3] == "X" && value_array[6] == "X" && value_array[9] == "X") ||
       (value_array[1] == "X" && value_array[2] == "X" && value_array[3] == "X") || (value_array[4] == "X" && value_array[5] == "X" && value_array[6] == "X") || (value_array[7] == "X" && value_array[8] == "X" && value_array[9] == "X") ||
       (value_array[1] == "X" && value_array[5] == "X" && value_array[9] == "X") || (value_array[7] == "X" && value_array[5] == "X" && value_array[3] == "X")) {
-      return "Player2Wins";
+      return "Player 2 wins";
     }
     else if (value_array[1] != "" && value_array[2] != "" && value_array[3] != "" && value_array[4] != "" && value_array[5] != "" && value_array[6] != "" && value_array[7] != "" && value_array[8] != "" && value_array[9] != "") {
       return "Draw";
@@ -196,18 +196,18 @@ class MyGame2 extends MiniGame {
     // this.arr=makeGetRequest("https://ibk-riddles-api.herokuapp.com/?ref=https://githubhelp.com");
     this.answer = answer;
     this.question = question;
-    this.client.sendMessage(this.chatId, "*Game Started! Solve The Riddle!*\n\n" + "_" + this.question + "_");
+    this.client.sendMessage(this.chatId, "*Game has been started ! Solve the riddle*\n\n" + "_" + this.question + "_");
   }
 
   async procMessage(message) {
     if (message.body.toLowerCase().includes(this.answer.toLowerCase())) {
-      await message.reply('*_You Are Right & The Winner Of This Game_* 🥳🥳🥳');
+      await message.reply('*You are right & the winner of this game*');
       this.gameOver();
     } else if (!message.fromMe) {
-      await message.reply('You are wrong!');
+      await message.reply('You are wrong');
     }
     if (message.body == "!stop") {
-      await this.client.sendMessage(this.chatId, "_Game Stopped!_");
+      await this.client.sendMessage(this.chatId, "Game has been stopped");
       this.gameOver();
     }
   }
@@ -246,7 +246,7 @@ fs.readdir("./commands", (err, files) => {
 });
 
 client.on('qr', (qr) => {
-  console.log('QR RECEIVED', qr);
+  console.log('Qr received', qr);
   qrcode.generate(qr, {small: true});
 });
 // client.on('qr', qr => {
@@ -256,11 +256,11 @@ client.on('qr', (qr) => {
 
 //FOR PC
 // client.on('qr', (qr) => {
-//   console.log('QR RECEIVED', qr);
+//   console.log('Qr received', qr);
 // });
 
 // client.on('ready', () => {
-//   console.log('Client is ready!');
+//   console.log('Client is ready');
 // });
 
 //END FOR PC
@@ -270,7 +270,7 @@ client.initialize();
 
 client.on("auth_failure", () => {
   console.error(
-    "There is a problem in authentication, Kindly set the env var again and restart the app"
+    "There is a problem in authentication , kindly set the env var again and restart the app"
   );
 });
 
@@ -363,8 +363,7 @@ videos.forEach( async function ( v ) {
         console.log("location: " + data.file);
         const TN = await MessageMedia.fromUrl(v.image);
 
-        msg.delete(true);
-        client.sendMessage(idk, TN, { caption: "*DOWNLOADED:* " + data.title });
+        client.sendMessage(idk, TN, { caption: "*Downloaded :* " + data.title });
         client.sendMessage(idk, aud, { sendAudioAsVoice: true });
 
       });
@@ -380,7 +379,7 @@ videos.forEach( async function ( v ) {
      } } )
 
     } else {
-      await msg.reply("_This Feature Unlocks at Level 10_\n_Type *!lvl* For Your Current Level_");
+      await msg.reply("This feature unlocks at level 10\n\nType *!lvl* for your current level");
     }
   }else if(!msg.fromMe&& config.userbot=="false"){
     if (msg.body.startsWith("!download")) {
@@ -444,7 +443,7 @@ videos.forEach( async function ( v ) {
           console.log("location: " + data.file);
           const TN = await MessageMedia.fromUrl(v.image);
   
-          client.sendMessage(idk, TN, { caption: "*DOWNLOADED:* " + data.title });
+          client.sendMessage(idk, TN, { caption: "*Downloaded :* " + data.title });
           client.sendMessage(idk, aud, { sendAudioAsVoice: true });
   
         });
@@ -460,7 +459,7 @@ videos.forEach( async function ( v ) {
        } } )
   
       } else {
-        await msg.reply("_This Feature Unlocks at Level 10_\n_Type *!lvl* For Your Current Level_");
+        await msg.reply("This feature unlocks at level 10\n\nType *!lvl* for your current level");
       }
     }
   }
@@ -622,7 +621,7 @@ client.on("message_create", async (msg) => {
               
             }
           } catch (error) {
-            console.log("levelled up");
+            console.log("Levelled up");
             await Levels.appendXp(user.id.user,"Global", 25);
           }
         }// await client.sendMessage(msg.to,command)
@@ -651,7 +650,7 @@ client.on("message_create", async (msg) => {
               
             }
           } catch (error) {
-            console.log("levelled up");
+            console.log("Levelled up");
             await Levels.appendXp(user.id.user,"Global", 25);
           }
         }// await client.sendMessage(msg.to,command)
@@ -663,14 +662,14 @@ client.on("message_create", async (msg) => {
     } else if (msg.body != "!NumbersGame" && msg.body != "!stop" && msg.body != "!RiddlesGame" && !msg.body.startsWith("!download")) {
       await client.sendMessage(
         msg.to,
-        "No such command found. Type !help to get the list of available commands"
+        "No such command found type !help to get the list of available commands"
       );
     }
   }
 
 
   // if(!msg.body.startsWith("!")){
-  if (msg.body.includes("@") && !msg.body.startsWith("*MESSAGES") && !msg.body.includes("_This Message is Automated by SciBot Because of !all command_")) {
+  if (msg.body.includes("@") && !msg.body.startsWith("*Messages") && !msg.body.includes("This message is automated by eliza because of ! all command")) {
     // await client.sendMessage(msg.to,"script started");
     let command = "!tagged";
     let args = command.slice(1).trim().split(/ +/g);
@@ -684,7 +683,7 @@ client.on("message_create", async (msg) => {
     }
 
   }
-  if (!msg.body.includes("_This Message is Automated by SciBot_") && !msg.body.startsWith("*MESSAGES") && !msg.body.includes("To get more info use ```!help [command]```")) {
+  if (!msg.body.includes("This message is automated by eliza") && !msg.body.startsWith("*Messages*") && !msg.body.includes("To get more info use ```!help [command]```")) {
     if (msg.body.toLowerCase().includes("group link") || msg.body.toLowerCase().includes("group inv link") || msg.body.toLowerCase().includes("group invite link") || msg.body.toLowerCase().includes("grp link") || msg.body.toLowerCase().includes("grp inv link") || msg.body.toLowerCase().includes("grp invite link") || msg.body.toLowerCase().includes("invite link") || msg.body.toLowerCase().includes("group link") || msg.body.toLowerCase().includes("inv link")) {
       // await client.sendMessage(msg.to,"script started");
       let command = "!inv";
@@ -707,7 +706,7 @@ client.on("group_join", async (msg) => {
   const contact = await client.getContactById(msg.recipientIds[0]);
   var contact_name;
   if (contact.isMe) {
-    contact_name = "Scimitar";
+    contact_name = "Yuki";
   } else {
     contact_name = contact.pushname;
   }
@@ -717,12 +716,12 @@ client.on("group_join", async (msg) => {
   // await chat.sendMessage(JSON.stringify(owner));
   var owner_name;
   if (owner.isMe == true) {
-    owner_name = "Scimitar";
+    owner_name = "Yuki";
   }
   else {
     owner_name = owner.pushname;
   }
-  await chat.sendMessage(dp, { caption: "```Welcome To " + chat.name + "! " + contact_name + "```\n\n*Group Owner :* " + owner_name + "\n\n" + chat.description + "\n\n" + "_This Message is Automated by SciBot_" });
+  await chat.sendMessage(dp, { caption: "```Welcome to " + chat.name + "! " + contact_name + "```\n\n*Group owner :* " + owner_name + "\n\n" + chat.description + "\n\n" + "This message is automated by eliza" });
   // await chat.sendMessage(" _Welcome!_ "+contact.pushname+dp);
   // await chat.sendMessage(JSON.stringify(msg));
 
@@ -746,7 +745,7 @@ client.on("message_revoke_everyone", async (after, before) => {
   temp_contact = await before.getContact();
   if(!before.fromMe){
   try {
-    var { conn, coll } = await database("DeletedMessages");
+    var { conn, coll } = await database("Deleted messages");
 
 
 
@@ -777,7 +776,7 @@ client.on("message_revoke_everyone", async (after, before) => {
         config.group_delete_alert == "true"
       ) {
         chat.sendMessage(
-          "_" + contact.pushname + " deleted this message_ 👇\n\n" + before.body
+          "_" + contact.pushname + "deleted this message\n\n" + before.body
         );
       }
     }
@@ -792,10 +791,10 @@ if (
   before.hasMedia !== true &&
   before.author == undefined &&
   // config.enable_delete_alert == "true"&& 
-  config.dm_del=="ON"
+  config.dm_del=="true"
 ) {
   chat.sendMessage(
-    "_" + contact.pushname + " deleted this message_ 👇\n\n" + before.body
+    "_" + contact.pushname + "deleted this message\n\n" + before.body
   );
 }
 }
@@ -812,7 +811,7 @@ client.on("disconnected", (reason) => {
 
 app.get("/", (req, res) => {
   res.send(
-    '<h1>This server is powered by Scibot<br></h1>'
+    '<h1>This server is powered by eliza<br></h1>'
   );
 });
 
@@ -823,5 +822,5 @@ app.use(
 ); // public directory will be publicly available
 
 app.listen(process.env.PORT || 8080, () => {
-  console.log(`Server listening at Port: ${process.env.PORT || 8080}`);
+  console.log(`Server listening at port : ${process.env.PORT || 8080}`);
 });
