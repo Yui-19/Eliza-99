@@ -2,7 +2,6 @@ const Levels = require("discord-xp");
 
 const execute = async (client,msg/*,args*/) => {
 
-    msg.delete(true);
     //discord-xp
   var cmd_user=await msg.getContact();
   if(!cmd_user.isMe){
@@ -20,7 +19,6 @@ const execute = async (client,msg/*,args*/) => {
 //feature
 console.log(parseInt(data_level));
 if(parseInt(data_level)>=3||cmd_user.isMe){
-
     const chat = await msg.getChat();
 
     if(msg.hasQuotedMsg){
@@ -58,7 +56,7 @@ if(parseInt(data_level)>=3||cmd_user.isMe){
                     break;
                 }
                 else{
-                    await chat.sendMessage("_Scibot isn't the admin of this group_");
+                    await chat.sendMessage("Whats isn't the admin of this group");
                     break;
                 }
             }
@@ -67,7 +65,7 @@ if(parseInt(data_level)>=3||cmd_user.isMe){
             }
             if(contact.id._serialized==contact2.id._serialized){
                 isInGroup=true;
-                await chat.sendMessage("_The contact you are trying to add is already added to the group!_");
+                await chat.sendMessage("The contact you are trying to add is already added to the group");
             }
             
 
@@ -88,7 +86,7 @@ if(parseInt(data_level)>=3||cmd_user.isMe){
                 chat.addParticipants(arr);
             }
             else{
-                await chat.sendMessage("_The Contact You Are Trying To Add is Not a Whatsapp Contact_");
+                await chat.sendMessage("The contact you are trying to add is not a whatsapp contact");
             }
         }
     }
@@ -98,28 +96,28 @@ if(parseInt(data_level)>=3||cmd_user.isMe){
                 chat.addParticipants(arr);
             }
             else{
-                await chat.sendMessage("_The Contact You Are Trying To Add is Not a Whatsapp Contact_");
+                await chat.sendMessage("The contact you are trying to add is not a whatsapp contact");
             }
         }
 
     }
         if(user_admin==false){
-            await chat.sendMessage("_You are not the admin of this group_");
+            await chat.sendMessage("You are not the admin of this group");
         }
         
     }
 }else{
-    await msg.reply("_This Feature Unlocks at Level 3_\n_Type *!lvl* For Your Current Level_");
+    await msg.reply("This feature unlocks at level 2\n\nType *!lvl* for your current level");
   }
 
 
 };
 
 module.exports = {
-    name: 'add', //name of the module
-    description: 'add someone to the group (ADMIN ONLY)', // short description of what this command does
-    command: '!add', //command with prefix. Ex command: '!test'
-    commandType: 'group', // admin|info|plugin
-    isDependent: false, //whether this command is related/dependent to some other command
-    help: 'HELP: !add\n\n```Just use !add while quoting a message of someone you want to add\nOR\nuse !a while quoting a contact card to add that contact```', // a string descring how to use this command Ex = help : 'To use this command type !test arguments'
+    name: 'Add',
+    description: 'Adds someone to the group',
+    command: '!add',
+    commandType: 'admin',
+    isDependent: false,
+    help: '*Add*\n\nJust use !add while quoting a message of someone you want to add\n\nUse !a while quoting a contact card to add that contact',
     execute};
