@@ -5,7 +5,7 @@ const {MessageMedia} = require('whatsapp-web.js');
 const config = require("../config");
 
 const execute = async (client,msg,args) => {
-    msg.delete(true);
+
  //discord-xp
  var cmd_user=await msg.getContact();
  if(!cmd_user.isMe){
@@ -37,17 +37,17 @@ if(parseInt(data_level)>=1||cmd_user.isMe){
         console.log("working");
         count=parseInt(count);
         count=10;
-        await client.sendMessage(idk,"*Sorry, you are not allowed to spam a text more than 10 times*");
+        await client.sendMessage(idk,"*Sorry , you are not allowed to spam a text more than 10 times*");
         return 0;
     }
     if (isNaN(count)) {
-        await client.sendMessage(idk, `🙇‍♂️ *Error*\n\n` + "```Invalid count```");
+        await client.sendMessage(idk, `*Error*\n\n` + "```Invalid count```");
         return 0;
     }
     if (count > 0)
         count = parseInt(count);
     else {
-        await client.sendMessage(idk, `🙇‍♂️ *Error*\n\n` + "```Count can't be zero.```");
+        await client.sendMessage(idk, `*Error*\n\n` + "```Count can't be zero```");
         return 0;
     }
     
@@ -90,24 +90,24 @@ if(parseInt(data_level)>=1||cmd_user.isMe){
             for (let i = 0; i < count; i++)
                 await client.sendMessage(idk, text);
         } else {
-            await client.sendMessage(idk, "```No text found for spamming!!! Please read !help spam.```");
+            await client.sendMessage(idk, "```No text found for spamming please read !help spam```");
         }
         
     }
 }
 else{
-    await msg.reply("*Scimitar Has Revoked Your Access To This Command!*");
+    await msg.reply("*Eliza has revoked your access to this command*");
 }}else{
-    await msg.reply("_This Feature Unlocks at Level 1_\n_Type *!lvl* For Your Current Level_");
+    await msg.reply("This feature unlocks at level 1\n\nType *!lvl* for your current level");
   }
 
 };
 
 module.exports = {
     name: 'Spam',
-    description: 'spams a certain message for given number of times',
+    description: 'Spams a certain message for given number of times',
     command: '!spam',
     commandType: 'plugin',
     isDependent: false,
-    help: `*Spam*\n\nSpam Messages. \n\n*!spam [count text]*\nOR\nreply *!spam [count]* to any message`,
+    help: `*Spam*\n\nSpams messages\n\n*!spam [count text]*\n\nReply *!spam [count]* to any message`,
     execute};
