@@ -3,7 +3,7 @@ const canvacord = require("canvacord");
 const { MessageMedia } = require("whatsapp-web.js");
 
 const execute = async (client,msg/*,args*/) => {
-    msg.delete(true);
+
 //discord-xp
 var cmd_user=await msg.getContact();
 if(!cmd_user.isMe){
@@ -38,16 +38,16 @@ if(parseInt(data_level)>=2||cmd_user.isMe){
     console.log(error);
 }
 }else{
-    await msg.reply("_This Feature Unlocks at Level 2_\n_Type *!lvl* For Your Current Level_");
+    await msg.reply("This feature unlocks at level 2\n\nType *!lvl* for your current level");
   }
 
 };
 
 module.exports = {
-    name: 'opinion', //name of the module
-    description: 'opinion meme', // short description of what this command does
-    command: '!opinion', //command with prefix. Ex command: '!test'
-    commandType: 'reactions', // admin|info|plugin
-    isDependent: false, //whether this command is related/dependent to some other command
-    help: "*Opinion*\n_Reply *!opinion* To Someone's Message", // a string descring how to use this command Ex = help : 'To use this command type !test arguments'
+    name: 'Opinion', 
+    description: 'Opinion meme', 
+    command: '!opinion', 
+    commandType: 'plugin',
+    isDependent: false, 
+    help: "*Opinion*\nReply *!opinion* to someone's message",
     execute};
