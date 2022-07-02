@@ -24,7 +24,7 @@ async function search(query) {
     } catch (error) {
         return {
             status: false,
-            content: `🙇‍♂️ *Error*\n\n` + "```Result not found for " + query + ", Please try again with different keyword!```",
+            content: `*Error*\n\n` + "```Result not found for " + query + ", Please try again with different keyword```",
             songarray: []
         };
     }
@@ -52,7 +52,7 @@ async function download(songkey, id) {
             } catch (w) {
                 return {
                     status: false,
-                    content: `🙇‍♂️ *Error*\n\n` + "```Something went wrong while fetching this song.```",
+                    content: `*Error*\n\n` + "```Something went wrong while fetching this song```",
                 };
             }
         } 
@@ -60,14 +60,14 @@ async function download(songkey, id) {
         else {
             return {
                 status: false,
-                content: `🙇‍♂️ *Error*\n\n` + "```This song key is invalid please send the correct song key.\nEx. !dldsong 1```",
+                content: `*Error*\n\n` + "```This song key is invalid please send the correct song key\nEx !dldsong 1```",
             };
         }
 
     } catch (error) {
         return {
             status: false,
-            content: `🙇‍♂️ *Error*\n\n` + "```Cache not found please search the song again```",
+            content: `*Error*\n\n` + "```Cache not found please search the song again```",
         };
     }
 }
