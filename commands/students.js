@@ -22,7 +22,7 @@ const execute = async (client, msg, args) => {
 
     let contact1 = await msg.getContact();
     if (contact1.isMyContact || contact1.isMe) {
-      let text = `@${contact1.id.user} *MENTIONED EVERYONE*`;
+      let text = `@${contact1.id.user} has *mentioned everyone*`;
       // await msg.reply(JSON.stringify(contact1));
       let mentions = [];
 
@@ -37,33 +37,33 @@ const execute = async (client, msg, args) => {
         // text += `@${participant.id.user} `;
       }
       mentions.push(cmd_user);
-      // await chat.sendMessage(text + `\n\n*This Message is Automated by SciBot Because of !everyone command*`, { mentions });
+      // await chat.sendMessage(text + `\n\n*This message is automated by whats because of !everyone command*`, { mentions });
       if (args.length) {
         let message = args.join(" ");
         await chat.sendMessage("```" + message + "```", { mentions });
       } else {
         await chat.sendMessage(
           text +
-            `\n\n_This Message is Automated by SciBot Because of !students command_`,
+            `\n\nThis message is automated by eliza because of ! students command`,
           { mentions }
         );
       }
     } else {
-      await msg.reply("*Scimitar Has Revoked Your Access To This Command!*");
+      await msg.reply("*Eliza has revoked your access to this command*");
     }
   } else {
     await msg.reply(
-      "_This Feature Unlocks at Level 2_\n_Type *!lvl* For Your Current Level_"
+      "This feature unlocks at level 2\n\nType *!lvl* for your current level"
     );
   }
 };
 
 module.exports = {
-  name: "students", //name of the module
-  description: "tag non-admins in a group", // short description of what this command does
-  command: "!students", //command with prefix. Ex command: '!test'
-  commandType: "group", //
-  isDependent: false, //whether this command is related/dependent to some other command
-  help: "Type !students in the chat to tag all group members", // a string descring how to use this command Ex = help : 'To use this command type !test arguments'
+  name: "Students", 
+  description: "Tags non admins in a group", 
+  command: "!students", 
+  commandType: "plugin", 
+  isDependent: false, 
+  help: "*Students*\n\nType !students in the chat to tag all group members",
   execute,
 };
