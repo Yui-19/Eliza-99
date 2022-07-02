@@ -7,7 +7,6 @@ const config = require("../config");
 const { MessageMedia } = require("whatsapp-web.js");
 // const stream = require('stream');
 const execute = async (client,msg,args) => {
-  msg.delete(true);
     var qm= await msg.getQuotedMessage();
     var media = await qm.downloadMedia();
     const chat= await msg.getChat();
@@ -45,11 +44,11 @@ axios({
   }; 
       
     module.exports = {
-      name: "rb", //name of the module
-      description: "remove background from an image", // short description of what this command does
-      command: "!rb", //command with prefix. Ex command: '!test'
-      commandType: "plugins", //
-      isDependent: false, //whether this command is related/dependent to some other command
-      help: "Type !rb while quoting any image", // a string descring how to use this command Ex = help : 'To use this command type !test arguments'
+      name: "Rb",
+      description: "Removes background from an image",
+      command: "!rb",
+      commandType: "plugin",
+      isDependent: false,
+      help: "Type !rb while quoting any image",
       execute,
     };
