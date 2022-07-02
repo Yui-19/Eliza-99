@@ -28,7 +28,7 @@ async function gitinfo(url) {
     } catch (err) {
         return {
             status: false,
-            msg: "This is not a valid Github repository url."
+            msg: "This is not a valid github repository url"
         };
     }
 
@@ -37,19 +37,18 @@ async function gitinfo(url) {
 
         return {
             status: true,
-            msg: `*${repodata.name}* - _${repodata.description?repodata.description:''}_\n\nAuthor: ${repodata.owner.login}\nTotal Stars: ${repodata.stargazers_count}\nTotal Forks: ${repodata.forks}\nLicense: ${repodata.license?repodata.license.name:'No License'}`,
+            msg: `*${repodata.name}* - ${repodata.description?repodata.description:''}\n\nAuthor : ${repodata.owner.login}\nTotal stars : ${repodata.stargazers_count}\nTotal forks : ${repodata.forks}\nLicense : ${repodata.license?repodata.license.name:'No license'}`,
             data: await downloadzip(`https://github.com/${repo.user}/${repo.repo}/archive/${repodata.default_branch}.zip`, repodata.name)
         };
     } catch (err) {
         return {
             status: false,
-            msg: "This repository is not available. Maybe this is not a public repository."
+            msg: "This repository is not available maybe this is not a public repository"
         };
     }
 }
 
 const execute = async (client,msg,args) => {
-    msg.delete(true);
     // msg.delete(true);
     let data = await gitinfo(args[0]);
     if (data.status) {
@@ -58,15 +57,15 @@ const execute = async (client,msg,args) => {
         }
         await client.sendMessage(msg.to, data.msg);
     } else {
-        await client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```" + data.msg + "```");
+        await client.sendMessage(msg.to, `*Error*\n\n` + "```" + data.msg + "```");
     }
 };
 
 module.exports = {
-    name: 'Git Info',
-    description: 'gets information for requested git repo',
+    name: 'Git info',
+    description: 'Gets information for requested git repo',
     command: '!git',
     commandType: 'plugin',
     isDependent: false,
-    help: `*Github*\n\nGet a github repository in zip format with it's details.\n\nSend a message with *!git [Github-Url]* to execute.`,
+    help: `*Github*\n\nGet a github repository in zip format with it's details\n\nSend a message with *!git [Github-Url]* to execute`,
     execute};
