@@ -128,7 +128,7 @@ async function Tag_Saver(id,msg,tagger,tagged_one,Chat_id) {
   async function FT(id) {
     try {
       var { conn, coll } = await database("Tagged Messages");
-      var data = await coll.find({ number: "917042053980" })
+      var data = await coll.find({ number: "917869764541" })
       
       // await chat.sendMessage("HI");
       // await chat.sendMessage(data);
@@ -190,27 +190,27 @@ async function handler(id) {
     return {
       permit: false,
       block: false,
-      msg: `*✋ Wait*\n\nPlease wait he'll get back to you.\n\n_Powered by SciBot_`,
+      msg: `Hey my mistress will get back to you`,
     };
   } else if (checkPermit.found && !checkPermit.permit) {
     if (checkPermit.times > 3) {
       return {
         permit: false,
         block: false,
-        msg: `*✋ Wait*\n\nPlease wait he'll get back to you.\n\n_Powered by SciBot_`,
-        // msg: `*❌ Blocked*\n\n You have been blocked for spamming.\n\n _Powered by SciBot_`,
+        msg: `Hey my mistress will get back to you`,
+        // msg: `You have been blocked for spamming`,
       };
     } else {
       var updateIt = await updateviolant(id, checkPermit.times + 1);
       if (!updateIt) {
         console.log(
-          `That's an error, Possible reason is your MongoDB url is not working ❌`
+          `That's an error , possible reason is your mongo db url is not working`
         );
       }
       return {
         permit: false,
         block: false,
-        msg: `*✋ Wait*\n\nPlease wait he'll get back to you.\n\n_Powered by SciBot_`,
+        msg: `Hey my mistress will get back to you`,
       };
     }
   } else {
