@@ -22,7 +22,6 @@ async function getShortURL(input) {
         });
 }
 const execute = async (client,msg,args) => {
-    msg.delete(true);
     //discord-xp
     var cmd_user=await msg.getContact();
     if(!cmd_user.isMe){
@@ -51,23 +50,22 @@ const execute = async (client,msg,args) => {
     }
 
     if (data == "error") {
-        await client.sendMessage(msg.to, `🙇‍♂️ *Error*\n\n` + "```Please make sure the entered URL is in correct format.```");
+        await client.sendMessage(msg.to, `*Error*\n\n` + "```Please make sure the entered url is in correct format```");
     }
     else {
-        await client.sendMessage(msg.to, `Short URL for ${data.input} is 👇\n${data.short}`);
+        await client.sendMessage(msg.to, `Short url for ${data.input} is\n${data.short}`);
     }
 }else{
-    await msg.reply("_This Feature Unlocks at Level 1_\n_Type *!lvl* For Your Current Level_");
+    await msg.reply("This feature unlocks at level 1\n\nType *!lvl* for your current level");
   }
 };
 
 
 module.exports = {
-    name: 'Shorten Link',
-    description: 'get shortend link for the given url',
+    name: 'Shorten link',
+    description: 'Gets shortend link for the given url',
     command: '!shorten',
     commandType: 'plugin',
     isDependent: false,
-    help: `*Shorten Link*\n\nCreates short URL for any valid URL. \n\n*!shorten [valid-url]*\n`,
-    getShortURL,
+    help: `*Shorten link*\n\nCreates short url for any valid url\n\n*!shorten [valid-url]*`,
     execute};
