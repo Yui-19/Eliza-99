@@ -11,10 +11,10 @@ const execute = async (client,msg/*,args*/) => {
 };
 
 module.exports = {
-    name: 'react', //name of the module
-    description: 'React with any emoji on the quoted message', // short description of what this command does
-    command: '!react', //short description of what this command doeswith prefix. Ex command: '!test'
-    commandType: 'plugin', // admin|info|plugin
-    isDependent: false, //whether this command is related/dependent to some other command
-    help: '*HELP !react*\n\nJust type !react followed by any emoji on a quoted message(slide left to right on any message) NOTE: MAKE SURE THAT THERE IS A SPACE AFTER !react & NOTHING AFTER REACTION\ne.g. !react 😀', // a string descring how to use this command Ex = help : 'To use this command type !test arguments'
+    name: 'React',
+    description: 'React with any emoji on the quoted message',
+    command: '!react',
+    commandType: 'plugin',
+    isDependent: false, 
+    help: '*React*\n\nJust type !react followed by any emoji on a quoted message ( slide left to right on any message )\n\nNote : Make sure that there should be space after !react and nothing after reaction\n\nExample : !react ❤️',
     execute};
